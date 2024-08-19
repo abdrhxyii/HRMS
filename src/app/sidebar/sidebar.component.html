@@ -1,0 +1,25 @@
+<div class="h-screen flex flex-col bg-white shadow-md transition-all"
+     [ngClass]="{'w-64': !isMobile, 'w-16': isMobile}">
+  
+  <!-- Toggle Button -->
+  <div class="p-4 flex items-center justify-between">
+    <div class="flex items-center justify-center gap-3">
+      <img *ngIf="!isMobile" src="/logo.png" alt="HRMS Logo" class="h-8">
+      <i *ngIf="isMobile" class="pi pi-bars px-2 cursor-pointer hover:bg-purple-100 rounded-lg py-2" (click)="toggleSidebar()"></i>
+      <p *ngIf="!isMobile" class="text-2xl font-bold text-gray-800">HRMS</p>
+    </div>
+    <i *ngIf="!isMobile" class="pi pi-arrow-left ml-12 cursor-pointer py-2 hover:bg-purple-100 rounded-lg px-2" (click)="toggleSidebar()"></i>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="flex-1 overflow-y-auto px-2 space-y-2">
+    <ul class="py-4">
+      <li *ngFor="let item of menuItems" class="px-4 py-2 hover:bg-purple-100 rounded-lg hover:text-base hover:font-semibold cursor-pointer">
+        <a href="#" class="flex items-center text-base text-gray-700 rounded-lg hover:text-purple-600 hover:text-base hover:font-semibold">
+          <i [class]="item.icon + ' mr-3'"></i>
+          <span [ngClass]="{'hidden': isMobile}">{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
